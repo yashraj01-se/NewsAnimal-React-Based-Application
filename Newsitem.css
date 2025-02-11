@@ -1,0 +1,48 @@
+.card-body {
+    border-radius: 20px; /* Smooth corners */
+    background-color: #ffffff; /* Clean white background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle depth */
+    padding: 20px; /* Generous inner spacing */
+    margin: 10px; /* Space around the card */
+    color: #333; /* Default text color for good contrast */
+    font-size: 16px; /* Standard readable font size */
+    position: relative; /* For pseudo-elements */
+    overflow: hidden; /* Hide pseudo-elements if they extend out */
+    cursor: pointer; /* Indicate interactivity */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.card-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(120deg, rgba(135, 206, 250, 0.9), rgba(100, 149, 237, 0.8), rgba(176, 224, 230, 0.7), rgba(70, 130, 180, 0.6));
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 0;
+    transition: transform 0.5s ease;
+    border-radius: 20%; /* Circular animation */
+    pointer-events: none; /* Prevent interaction with pseudo-element */
+}
+
+.card-body:hover::before {
+    transform: translate(-50%, -50%) scale(1); /* Expand gradient */
+}
+
+.card-body:hover {
+    transform: translateY(-5px) scale(1.01); /* Slight lift and smaller enlargement */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow increase */
+}
+
+.card-body:active {
+    transform: scale(0.98); /* Slightly shrink on click */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Reduce shadow intensity */
+}
+
+/* Ensure content is on top of the gradient */
+.card-body * {
+    position: relative;
+    z-index: 1; /* Text and elements above pseudo-elements */
+}

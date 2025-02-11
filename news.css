@@ -1,0 +1,366 @@
+/* General container styling */
+.hover-expand {
+    transition: transform 0.3s ease; /* Smooth transition */
+  }
+  
+  .hover-expand:hover {
+    transform: scale(1.4); /* Slightly enlarges the text on hover */
+  }
+html, body {
+    overflow-x: hidden;  /* Prevent horizontal scrolling */
+    margin: 0;           /* Remove default body margin */
+    padding: 0;          /* Remove default body padding */
+    
+  }
+  
+  .Container {
+    max-width: 100%;
+    overflow-x: hidden;  /* Prevent horizontal overflow */
+    padding: 0;          /* Adjust padding if necessary */
+  }
+  
+  .container {
+    width: 100%;  /* Ensure it doesn't exceed the viewport width */
+    padding-left: 15px;  /* Optional, depending on your design */
+    padding-right: 15px; /* Optional, depending on your design */
+    margin-top: 100px;
+    font-size: large;
+    
+  }
+  
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  
+.Container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white; /* Light background */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    animation: fadeIn 1s ease-in-out, moveUp 0.8s ease-in-out; /* Entrance animation */
+    color: #333333; /* Dark text for readability */
+    position: relative;
+    overflow: hidden; 
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slide-up background animation */
+@keyframes moveUp {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animated gradient background */
+.Container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: -1; /* Place it behind the container */
+    animation: backgroundAnimation 5s infinite linear; /* Continuous animation */
+    pointer-events: none; /* Prevent interference with the content */
+}
+
+/* Continuous background animation */
+@keyframes backgroundAnimation {
+    0% {
+        background-position: -100% 0;
+    }
+    50% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+/* Headline styling */
+.Container h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: #4e73df; /* Soft blue accent for title */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
+    animation: titleAnimation 2s ease-out; /* Add animation to title */
+}
+
+/* Title text animation */
+@keyframes titleAnimation {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Row and column layout */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    animation: rowAnimation 1s ease-out; /* Add animation to rows */
+}
+
+/* Row animation */
+@keyframes rowAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.col-md-4 {
+    flex: 0 0 calc(33.33% - 20px);
+    max-width: calc(33.33% - 20px);
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+.col-md-4:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Newsitem card styling */
+.Newsitem {
+    background: #d4d9db; /* White card background */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    color: #333; /* Dark text for contrast */
+    animation: newsItemAnimation 0.6s ease-out; /* Animation for news item */
+}
+
+/* Newsitem entrance animation */
+@keyframes newsItemAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.Newsitem:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+}
+
+/* Newsitem image */
+.Newsitem img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+    transition: transform 0.3s ease;
+}
+
+.Newsitem:hover img {
+    transform: scale(1.1); /* Image zoom effect */
+}
+
+/* Newsitem title */
+.Newsitem .Title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 15px;
+    color: #333;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.Newsitem:hover .Title {
+    color: #4e73df; /* Highlight title on hover */
+}
+
+/* Newsitem description */
+.Newsitem .Description {
+    font-size: 0.95rem;
+    margin: 0 15px 15px 15px;
+    color: #555;
+    line-height: 1.5;
+    transition: color 0.3s ease;
+}
+
+.Newsitem:hover .Description {
+    color: #333; /* Slight darkening of description text */
+}
+
+/* Newsitem link button */
+.Newsitem .btn {
+    display: inline-block;
+    margin: 15px;
+    padding: 12px 20px;
+    background: #4e73df; /* Soft blue background */
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    cursor: pointer; /* Ensures pointer cursor on hover */
+}
+
+/* Hover effect */
+.Newsitem .btn:hover {
+    background: #2e59d9; /* Darker blue on hover */
+    transform: scale(1.1); /* Button enlarges slightly */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    filter: brightness(1.2); /* Slight brightness increase */
+}
+
+/* Animated border effect on hover */
+.Newsitem .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #fff; /* White border */
+    border-radius: 25px;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease; /* Smooth fade-in */
+}
+
+/* Show the border on hover */
+.Newsitem .btn:hover::before {
+    opacity: 1; /* Border appears */
+}
+
+/* Button focus animation (when clicked or tabbed into) */
+.Newsitem .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(70, 130, 180, 0.5); /* Soft blue glow for focus */
+}
+
+/* Adding a subtle animation effect when the page loads */
+.Newsitem .btn {
+    animation: buttonIntro 0.6s ease-out forwards;
+}
+
+/* Slide-in Animation */
+.Newsitem .btn.slide-in {
+    display: inline-block;
+    margin: 15px;
+    padding: 12px 20px;
+    background: #4e73df; /* Soft blue background */
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    animation: slideInEffect 0.8s ease-out forwards;
+}
+
+/* Slide-in animation keyframes */
+@keyframes slideInEffect {
+    0% {
+        transform: translateX(100%); /* Start from right */
+    }
+    100% {
+        transform: translateX(0); /* Slide to normal position */
+    }
+}
+
+/* Button entrance animation */
+@keyframes buttonIntro {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 992px) {
+    .col-md-4 {
+        flex: 0 0 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+
+    .Newsitem img {
+        height: 160px; /* Adjust image height */
+    }
+
+    .Container h1 {
+        font-size: 2rem; /* Adjust heading size */
+    }
+}
+
+@media (max-width: 768px) {
+    .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .Newsitem img {
+        height: 140px; /* Adjust image height for smaller screens */
+    }
+
+    .Container h1 {
+        font-size: 1.8rem; /* Adjust heading size */
+    }
+}
+
+@media (max-width: 576px) {
+    .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .Newsitem img {
+        height: 120px; /* Further adjustment for mobile screens */
+    }
+
+    .Container h1 {
+        font-size: 1.5rem; /* Adjust heading size */
+    }
+}
